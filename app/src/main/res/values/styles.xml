@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="FABs">
+        <item name="android:backgroundTint">@color/tan</item>
+    </style>
+</resources>

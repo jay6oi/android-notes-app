@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Noted" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#cc9763</item>
+        <item name="colorPrimaryVariant">#cc9763</item>
+        <item name="android:statusBarColor" tools:targetApi="1">?attr/colorPrimaryVariant</item>
+    </style>
+
+    <style name="Theme.Noted" parent="Base.Theme.Noted" />
+</resources>
