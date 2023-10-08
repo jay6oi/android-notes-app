@@ -172,7 +172,7 @@ class NotesActivity : AppCompatActivity() {
             startActivity(intent)
             overridePendingTransition(0,0)
         }else{
-            Toast.makeText(this, "Can not save empty note", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Cannot save empty note", Toast.LENGTH_LONG).show()
         }
 
     }
