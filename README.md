@@ -1,2 +1,2 @@
-# folio
+# notes-app
 A place of...
