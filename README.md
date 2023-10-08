@@ -1,2 +1,2 @@
 # notes-app
-A place of...
+I created an app for note-taking
