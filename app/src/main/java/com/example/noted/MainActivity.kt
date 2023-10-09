@@ -1,14 +1,11 @@
 package com.example.noted
 
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.noted.Adapter.SwipeToDeleteCallback
 import com.example.noted.databinding.ActivityMainBinding
 import java.io.BufferedReader
 import java.io.File
@@ -21,9 +18,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: Adapter
     private lateinit var list: ArrayList<Info>
     private var isAllFabsVisible: Boolean = true
-    private var i =0
 
-    fun getLinesExceptFirst(inputString: String): String {
+    private fun getLinesExceptFirst(inputString: String): String {
         val lines = inputString.split("\n")
         if (lines.size > 1) {
             return lines.subList(1, lines.size).joinToString("\n")
@@ -49,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                         val inputStreamReader = InputStreamReader(fileInputStream)
                         val bufferedReader = BufferedReader(inputStreamReader)
                         var line : String?
-                        var lines= ArrayList<String>()
+                        val lines= ArrayList<String>()
                         val stringBuilder = StringBuilder()
 
                         while(bufferedReader.readLine().also { line = it } != null){
@@ -58,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                         }
                         val firstLine = lines[0]
 
-                        if (firstLine.equals("noTitle")) {
+                        if (firstLine == "noTitle") {
                             // Process the first line here
                             // For example, you can print it along with the file name
                             list.add(Info("",getLinesExceptFirst(stringBuilder.toString()),file.name, file.lastModified()))
