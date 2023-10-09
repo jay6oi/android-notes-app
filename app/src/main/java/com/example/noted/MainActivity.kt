@@ -1,6 +1,7 @@
 package com.example.noted
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -55,16 +56,16 @@ class MainActivity : AppCompatActivity() {
                             lines.add(line!!)
                             stringBuilder.append(line).append("\n")
                         }
-
                         val firstLine = lines[0]
 
                         if (firstLine.equals("noTitle")) {
                             // Process the first line here
                             // For example, you can print it along with the file name
-                            list.add(Info("",getLinesExceptFirst(stringBuilder.toString()),file.name))
+                            list.add(Info("",getLinesExceptFirst(stringBuilder.toString()),file.name, file.lastModified()))
+                            //Toast.makeText(this,file.lastModified().toString(),Toast.LENGTH_SHORT).show()
                         }else{
                             //Toast.makeText(this, "there is a title",Toast.LENGTH_LONG).show()
-                            list.add(Info(firstLine,stringBuilder.toString(),file.name))
+                            list.add(Info(firstLine,stringBuilder.toString(),file.name, file.lastModified()))
                         }
 
                         bufferedReader.close()
@@ -77,7 +78,7 @@ class MainActivity : AppCompatActivity() {
 //                i++
             }
         }
-
+        list = ArrayList(list.sortedByDescending { it.lastMod })
 
         adapter = Adapter(list, this)
 
