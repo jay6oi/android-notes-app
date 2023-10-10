@@ -74,6 +74,7 @@ class MainActivity : AppCompatActivity() {
 //                i++
             }
         }
+
         list = ArrayList(list.sortedByDescending { it.lastMod })
 
         adapter = Adapter(list, this)

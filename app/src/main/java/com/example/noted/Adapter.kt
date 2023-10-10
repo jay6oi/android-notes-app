@@ -4,24 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.noted.databinding.ActivityMainBinding
-import com.example.noted.databinding.ActivityNotesBinding
 import com.example.noted.databinding.PreviewBinding
-import java.io.BufferedReader
 import java.io.File
-import java.io.FileNotFoundException
-import java.io.IOException
-import java.io.InputStreamReader
-import java.lang.Exception
 
-class Adapter(val list: ArrayList<Info>, val context: Context): RecyclerView.Adapter<Adapter.MyView>() {
-
-    inner class MyView(val itemBinding: PreviewBinding): RecyclerView.ViewHolder(itemBinding.root){
-
-    }
+class Adapter(private val list: ArrayList<Info>, private val context: Context): RecyclerView.Adapter<Adapter.MyView>() {
+    inner class MyView(val itemBinding: PreviewBinding): RecyclerView.ViewHolder(itemBinding.root)
 
     inner class SwipeToDeleteCallback : ItemTouchHelper.SimpleCallback(
         0,
@@ -69,7 +58,7 @@ class Adapter(val list: ArrayList<Info>, val context: Context): RecyclerView.Ada
     }
 
     override fun onBindViewHolder(holder: MyView, position: Int) {
-        if(list[position].title.equals("")){
+        if(list[position].title ==""){
             holder.itemBinding.tvItem.text = readFirstLine(list[position].note)
         }else{
             holder.itemBinding.tvItem.text = list[position].title
