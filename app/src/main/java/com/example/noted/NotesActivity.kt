@@ -3,14 +3,10 @@ package com.example.noted
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.noted.databinding.ActivityMainBinding
 import com.example.noted.databinding.ActivityNotesBinding
 import java.io.BufferedReader
 import java.io.File
-import java.io.FileInputStream
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
@@ -99,7 +95,6 @@ class NotesActivity : AppCompatActivity() {
             val title = notesBinding.etTitle.text.toString()
             val note: String = notesBinding.etNoteArea.text.toString()
             val fos: FileOutputStream
-            val fis: FileInputStream
             //val tFile = File("track.txt")
             val folder = File(filesDir,folderName)
             var count = 0
