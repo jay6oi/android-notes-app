@@ -3,9 +3,12 @@ package com.example.noted
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.noted.databinding.ActivityMainBinding
 import java.io.BufferedReader
 import java.io.File
@@ -27,10 +30,15 @@ class MainActivity : AppCompatActivity() {
         return ""
     }
 
+    override fun onBackPressed() {
+        finishAffinity()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
 
         val files =File(filesDir,"Notes").listFiles()
@@ -79,11 +87,39 @@ class MainActivity : AppCompatActivity() {
 
         adapter = Adapter(list, this)
 
+
         val itemTouchHelper = ItemTouchHelper(adapter.SwipeToDeleteCallback())
         itemTouchHelper.attachToRecyclerView(binding.recyclerView)
 
         binding.recyclerView.adapter=adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
+
+        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                //filterList(newText)
+                return true
+            }
+
+        })
+
+        if (adapter.itemCount == 0) {
+            binding.apply{
+                NOTED.visibility = View.VISIBLE
+                textView2.visibility = View.VISIBLE
+                recyclerView.visibility = View.GONE
+            }
+        } else {
+            binding.apply{
+                NOTED.visibility = View.GONE
+                textView2.visibility = View.GONE
+                recyclerView.visibility = View.VISIBLE
+            }
+
+        }
 
         binding.apply {
             addNote.isVisible=false
@@ -117,7 +153,19 @@ class MainActivity : AppCompatActivity() {
         binding.addNote.setOnClickListener {
             //Toast.makeText(this,"You'll be able to use this soon",Toast.LENGTH_SHORT).show()
             val intent = Intent(this, NotesActivity::class.java)
+
             startActivity(intent)
         }
     }
+
+//    private fun filterList(query: String?){
+//        if(query!=null){
+//            val filteredList = ArrayList<Info>()
+//            for(i in list){
+//                if(i.){
+//
+//                }
+//            }
+//        }
+//    }
 }

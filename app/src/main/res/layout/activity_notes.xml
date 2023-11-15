@@ -27,6 +27,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         android:hint="Title"
+        android:maxLength="50"
         android:singleLine="true"
         android:textSize="20sp"
         android:textStyle="bold"

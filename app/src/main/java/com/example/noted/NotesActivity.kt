@@ -148,7 +148,7 @@ class NotesActivity : AppCompatActivity() {
                 e.stackTrace
             }
 
-            count= count+1
+            count+=1
             try{
                 val tOutput =openFileOutput("track.txt", MODE_PRIVATE)
                 tOutput.write(count.toString().toByteArray())
