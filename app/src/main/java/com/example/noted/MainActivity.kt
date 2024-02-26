@@ -94,17 +94,17 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.adapter=adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
-        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                //filterList(newText)
-                return true
-            }
-
-        })
+//        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                return false
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                //filterList(newText)
+//                return true
+//            }
+//
+//        })
 
         if (adapter.itemCount == 0) {
             binding.apply{
