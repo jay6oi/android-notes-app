@@ -34,9 +34,10 @@ class Adapter(private val list: ArrayList<Info>, private val context: Context): 
         }
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-            val builder = AlertDialog.Builder(context)
+
             // Get the position of the swiped item
             val position = viewHolder.adapterPosition
+            val builder = AlertDialog.Builder(context)
             builder.setMessage("Are you sure you want to Delete?")
                 .setCancelable(false)
                 .setPositiveButton("Delete") { dialog, id ->
